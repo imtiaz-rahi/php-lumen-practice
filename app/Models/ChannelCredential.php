@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Shurjopay\Controllers;
+namespace App\Models;
 
 /**
  *  All the credentials need to initil

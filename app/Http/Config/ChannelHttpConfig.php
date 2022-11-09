@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Shurjopay\Controllers;
+namespace App\Http\Config;
 
 /**
  * Get channel HTTP configuration
- * 
+ *
  * @author Imtiaz Rahi
  * @author Mominur rahman
  * @since 2022-11-01
- * 
+ *
  */
 class ChannelHttpConfig {
 
@@ -17,17 +17,17 @@ class ChannelHttpConfig {
      * Read more https://curl.se/libcurl/c/CURLOPT_HTTP_VERSION.html
     */
     public $httpVersion = 'CURL_HTTP_VERSION_1_1';
-    /** 
-     * Maximum amount of time in seconds to which the execution of individual 
+    /**
+     * Maximum amount of time in seconds to which the execution of individual
      * cURL extension function calls will be limited
      * Default timeout is 0 (zero) which means it never times out during transfer
     */
     public $connectionTimeout = 0;
 
-    /** 
-     * The maximum amount of HTTP redirections to follow 
+    /**
+     * The maximum amount of HTTP redirections to follow
      * Default value of 20 is set to prevent infinite redirects.
-     * Setting to -1 allows inifinite redirects, and 0 refuses all redirects. 
+     * Setting to -1 allows inifinite redirects, and 0 refuses all redirects.
     */
     public $maxRedirects = 20;
 

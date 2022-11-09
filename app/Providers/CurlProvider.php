@@ -63,7 +63,7 @@ class CurlProvider implements HttpHandlerInterface {
     /**
      * Get default configuration of a channel
      *
-     * @return \App\Shurjopay\Controllers\ChannelHttpConfig
+     * @return \App\Models\ChannelHttpConfig
      */
 
     public function config() {
