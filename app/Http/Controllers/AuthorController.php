@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use App\Interfaces\Repo\AuthorRepo;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class AuthorController extends Controller
 {
@@ -25,5 +26,19 @@ class AuthorController extends Controller
     public function get($id): \Illuminate\Http\JsonResponse
     {
         return response()->json($this->repo->findById($id));
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    public function create(Request $req) {
+        $this->validate($req, [
+            'name' => 'required',
+            'email' => 'required|email|unique:authors',
+            'location' => 'required|alpha'
+        ]);
+        $obj = $this->repo->create($req->all());
+        // TODO replace with HTTP status code constant
+        return response()->json($obj, 201);
     }
 }
