@@ -21,9 +21,9 @@ interface EloquentRepositoryInterface
      *
      * @param array $columns Columns of a DB table
      * @param array $relations
-     * @return Collections
+     * @return Collection
      */
-    public function all(array $columns = ['*'], array $relations = []): Collections;
+    public function all(array $columns = ['*'], array $relations = []): Collection;
 
     /**
      * Find model by record id.
