@@ -16,13 +16,14 @@ class AuthorController extends Controller
         $this->repo = $authorRepo;
     }
 
-    public function list()
+    public function list(): \Illuminate\Http\JsonResponse
     {
-        return response()->json(Author::all());
-        //return response()->json($this->repo->all());
+        //return response()->json(Author::all());
+        return response()->json($this->repo->all());
     }
 
-    public function get($id) {
+    public function get($id): \Illuminate\Http\JsonResponse
+    {
         return response()->json($this->repo->findById($id));
     }
 }
