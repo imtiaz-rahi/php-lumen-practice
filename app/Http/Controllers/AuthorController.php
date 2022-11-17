@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\ShurjopayStatus;
 use App\Models\Author;
 use App\Interfaces\Repo\AuthorRepo;
+use App\Traits\ShurjopayStatusTrait;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
@@ -22,6 +24,7 @@ class AuthorController extends Controller
 {
 
     private $repo;
+    use ShurjopayStatusTrait;
 
     public function __construct(AuthorRepo $authorRepo)
     {
@@ -34,6 +37,14 @@ class AuthorController extends Controller
      */
     public function list(): JsonResponse
     {
+        echo "Refund requested = " . SP_REFUND_REQUESTED . "\n";
+        echo ShurjopayStatus::message(SP_REFUND_SCRAP) . "\n";
+        echo ShurjopayStatus::status(SP_REFUND_SCRAP) . "\n";
+        if (SP_REFUND_SCRAP == 2003)
+            echo "got it";
+        else echo "problem has occurred";
+        echo $this->sp_status_message(SP_REFUND_DISBURSED) . "\n";
+        echo $this->sp_status_slug(SP_REFUND_DISBURSED) . "\n";
         return response()->json($this->repo->all());
     }
 
